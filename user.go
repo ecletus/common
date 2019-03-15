@@ -9,6 +9,9 @@ type User interface {
 	WithID
 	DisplayName() string
 	GetEmail() string
+	GetName() string
+	GetDefaultLocale() string
+	GetLocales() []string
 }
 
 var DB_USER = PREFIX + ".user"

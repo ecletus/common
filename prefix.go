@@ -1,7 +1,5 @@
 package common
 
-import "reflect"
+import "github.com/moisespsena/go-path-helpers"
 
-var PREFIX = reflect.TypeOf(prefix).PkgPath()
-
-func prefix() {}
+var PREFIX = path_helpers.GetCalledDir()
