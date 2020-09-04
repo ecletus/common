@@ -1,20 +1,28 @@
 package common
 
 import (
+	"time"
+
+	"github.com/ecletus/roles"
+
 	"github.com/moisespsena-go/aorm"
 )
 
 // CurrentUser is an interface, which is used for qor admin to get current logged user
 type User interface {
-	WithID
+	roles.RoleHaver
 	DisplayName() string
 	GetEmail() string
 	GetName() string
 	GetDefaultLocale() string
+	GetTimeLocation() *time.Location
 	GetLocales() []string
+	GetRoles() roles.Roles
+	GetUID() string
+	IsSuper() bool
 }
 
-var DB_USER = PREFIX + ".user"
+var DB_USER = pkg + ".user"
 
 func SetUserToDB(db *aorm.DB, user User) *aorm.DB {
 	return db.Set(DB_USER, user)
